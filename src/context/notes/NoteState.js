@@ -40,7 +40,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-            "_id": "671ab80adfb9921ad3d69668",
+            "_id": "671ab80adfb9921ad3d69663",
             "user": "6717ab43c9435b7b19e05995",
             "title": "hey Arpit",
             "description": "Hey, this is Arpit Awasthi, how're you doing?",
@@ -49,7 +49,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "671ab80adfb9921ad3d6966a",
+            "_id": "671ab80adfb9921ad3d6966b",
             "user": "6717ab43c9435b7b19e05995",
             "title": "hey Arpit",
             "description": "Hey, this is Arpit Awasthi, how're you doing?",
@@ -58,7 +58,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "671ab80adfb9921ad3d69668",
+            "_id": "671ab80adfb9921ad3d6966v",
             "user": "6717ab43c9435b7b19e05995",
             "title": "hey Arpit",
             "description": "Hey, this is Arpit Awasthi, how're you doing?",
@@ -67,7 +67,7 @@ const NoteState = (props) => {
             "__v": 0
           },
           {
-            "_id": "671ab80adfb9921ad3d6966a",
+            "_id": "671ab80adfb9921ad3d6966c",
             "user": "6717ab43c9435b7b19e05995",
             "title": "hey Arpit",
             "description": "Hey, this is Arpit Awasthi, how're you doing?",
@@ -77,8 +77,39 @@ const NoteState = (props) => {
           }
       ]
       const [notes, setNotes] = useState(notesInitial)
+
+
+      // Add a Note
+      const addNote = (title, description, tag)=> {
+        // TODO: API Call
+        console.log("Adding a new Note.")
+        const note = {
+            "_id": "671ab80adfb9921ad3d6966ca",
+            "user": "6717ab43c9435b7b19e05995",
+            "title": title,
+            "description": description,
+            "tag": tag,
+            "date": "1729804298808",
+            "__v": 0
+          };
+        setNotes(notes.concat(note))
+      }
+
+      // Delete a Note
+      const deleteNote = (id)=> {
+        // TODO: API Call
+        console.log("Deleting the node with id "+id);
+        const newNotes = notes.filter((note)=>{return note._id!==id})
+        setNotes(newNotes)
+      }
+
+      // Edit a Note
+      const editNote = ()=> {
+        
+      }
+
       return (
-        <noteContext.Provider value={{notes, setNotes}}>
+        <noteContext.Provider value={{notes, addNote, deleteNote, editNote}}>
             {props.children}
         </noteContext.Provider>
     )
