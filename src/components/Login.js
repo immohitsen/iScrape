@@ -2,7 +2,7 @@ import e from "cors";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login(props) {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
 
@@ -22,10 +22,11 @@ function Login() {
     console.log(json);
     if (json.success) {
       // Save the auth token and redirect
-      localStorage.setItem("token", json.authtoken);
+      localStorage.setItem('token', json.authtoken);
       navigate("/");
+      props.showAlert("Logged In Successfully", "success")
     } else {
-      alert("Invalid credentials");
+      props.showAlert("Invalid details", "danger")
     }
   };
 
@@ -34,7 +35,8 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="container mt-4">
+      <h2>Login to continue using iScrape</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -64,13 +66,6 @@ function Login() {
             onChange={onChange}
             name="password"
             id="password"
-          />
-        </div>
-        <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
           />
         </div>
         <button type="submit" className="btn btn-primary">
