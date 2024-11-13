@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# iScrape
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+iScrape Notes is a straightforward and efficient notes application built with React, Node.js, Express, and MongoDB. Designed for simplicity and functionality, it enables users to create, store, and manage notes securely. This app is ideal for anyone seeking a basic notes solution with a responsive front end and a reliable back end.
 
-## Available Scripts
+![Screenshot (16)](https://github.com/user-attachments/assets/12588fdd-25bf-4427-80dc-abc4139e15b5)
+![Screenshot (17)](https://github.com/user-attachments/assets/23647bb7-f4fe-4729-96e9-e3d433ec887c)
+![Screenshot (18)](https://github.com/user-attachments/assets/3118fd88-3e5b-4a1f-9688-35ec7069c870)
+![Screenshot (19)](https://github.com/user-attachments/assets/9164fc99-19a1-4bff-9a57-b81ffa8d602a)
+![Screenshot (14)](https://github.com/user-attachments/assets/1339671b-7e34-4573-8372-a4edea9b805c)
+![Screenshot (15)](https://github.com/user-attachments/assets/04c07e70-d185-41c8-94f3-a6f5dd9f28c6)
 
-In the project directory, you can run:
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User-friendly Interface**: Built with React for a smooth and responsive experience.
+- **Backend Support**: Node.js and Express handle server operations and API requests.
+- **Database Storage**: Notes are stored in MongoDB, enabling secure data retrieval and management.
+- **CRUD Functionality**: Create, Read, Update, and Delete notes easily.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+- **Node.js** (v14 or higher)
+- **MongoDB** (local or cloud-based)
+- **npm** (comes with Node.js) or **yarn**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/immohitsen/iscrape.git
+   cd iscrape
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   cd client
+   npm install
+   cd ..
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Set Up Environment Variables**:
+   Create a `.env` file in the root directory and add your MongoDB URI and server port:
+   ```plaintext
+   MONGODB_URI=your_mongo_db_uri
+   PORT=5000
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+1. **Start the Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Access the Frontend**:
+   Navigate to `http://localhost:3000` in your browser to use the app.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Build for Production**:
+   ```bash
+   cd client
+   npm run build
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## API Endpoints
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `POST /api/notes`: Create a new note.
+- `GET /api/notes`: Retrieve all notes.
+- `PUT /api/notes/:id`: Update a note by ID.
+- `DELETE /api/notes/:id`: Delete a note by ID.
 
-## Learn More
+## Folder Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **client**: Contains the React frontend.
+- **server**: Express backend to handle API endpoints and note logic.
+- **models**: MongoDB models for structuring note data.
+- **routes**: API routes for note management.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -m "Added feature-name"`
+4. Push to branch: `git push origin feature-name`
+5. Open a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
