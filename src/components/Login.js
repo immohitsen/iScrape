@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login(props) {
-  const host = process.env.HOST;
+  const host = "https://iscrape-git-main-mohit-sens-projects.vercel.app";
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
