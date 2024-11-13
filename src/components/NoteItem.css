@@ -1,0 +1,66 @@
+/* NoteItem.css */
+
+/* The Zoomed-in Effect for the modal */
+.zoomed-card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  
+  .zoomed-card-content {
+    background-color: #343a40;  /* Same as original card background color */
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    height: 30%;
+    overflow-y: auto;  /* Makes the content scrollable if the text is long */
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+  }
+  
+  .zoomed-card-overlay:hover .zoomed-card-content {
+    transform: scale(1);  /* Zoom-in effect when hovered */
+  }
+  
+  .card-text {
+    overflow-wrap: break-word; /* Ensures the text breaks well in case of long words */
+  }
+  
+  /* Add some padding for the note card */
+  .note-box {
+    cursor: pointer;
+  }
+  
+  .card-body {
+    padding: 1.2rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Button to Read More */
+  .btn-link {
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  
+  .card-title{
+    color: #ffffff;
+  }

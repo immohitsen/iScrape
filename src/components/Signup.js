@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
-  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" });
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,7 +19,9 @@ const Signup = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name, email, password
+        name,
+        email,
+        password,
       }),
     });
     const json = await response.json();
@@ -23,76 +30,75 @@ const Signup = (props) => {
       // Save the auth token and redirect
       localStorage.setItem("token", json.authtoken);
       navigate("/");
-      props.showAlert("Account Created Successfully", "success")
+      props.showAlert("Account Created Successfully", "success");
     } else {
-      props.showAlert("Invalid Credentials", "danger")
+      props.showAlert("Invalid Credentials", "danger");
     }
   };
+
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
+
   return (
-    <div className="container mt-4">
-      <h2>Create an account to continue using iScrape</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            className="form-control"
-            id="name"
-            onChange={onChange}
-            aria-describedby="emailHelp"
-          />
+    <div className="d-flex align-items-center justify-content-center position-absolute top-50 start-50 translate-middle">
+      <div
+        className="card shadow-lg p-4"
+        style={{ maxWidth: "400px", width: "100%" }}
+      >
+        <div className="card-body">
+          <h2 className="card-title text-center mb-4 text-dark">
+            Create an account
+          </h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+              <input
+                type="name"
+                name="name"
+                className="form-control"
+                id="name"
+                onChange={onChange}
+                aria-describedby="nameHelp"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                onChange={onChange}
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                onChange={onChange}
+                minLength={5}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary w-100 py-2 mt-3">
+              Sign Up
+            </button>
+          </form>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            onChange={onChange}
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            onChange={onChange}
-            minLength={5}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="cpassword" className="form-label">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            name="cpassword"
-            className="form-control"
-            id="cpassword"
-            onChange={onChange}
-            minLength={5}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

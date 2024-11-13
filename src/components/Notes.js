@@ -4,17 +4,15 @@ import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useNavigate } from "react-router-dom";
 
-
 const Notes = (props) => {
   let navigate = useNavigate();
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
+
   useEffect(() => {
-    if(localStorage.getItem('token')){
-        getNotes();
-        // navigate("/login");
-    }
-    else{
+    if (localStorage.getItem('token')) {
+      getNotes();
+    } else {
       navigate("/login");
     }
     // eslint-disable-next-line
@@ -49,9 +47,30 @@ const Notes = (props) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredNotes, setFilteredNotes] = useState(notes);
+
+  useEffect(() => {
+    if (searchQuery === "") {
+      setFilteredNotes(notes);
+    } else {
+      setFilteredNotes(
+        notes.filter((note) =>
+          note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          note.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          note.tag.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
+    }
+  }, [searchQuery, notes]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
   return (
     <>
-      <AddNote showAlert={props.showAlert}/>
+      {/* Modal for Edit Note */}
       <button
         ref={ref}
         type="button"
@@ -68,7 +87,7 @@ const Notes = (props) => {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-lg">
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
@@ -151,16 +170,33 @@ const Notes = (props) => {
           </div>
         </div>
       </div>
-      <div className="row my-3">
-        <h2>Your Notes</h2>
-        <div className="conatiner mx-2">
-          {notes.length === 0 && "No notes to display"}
+
+      {/* Main Content */}
+      
+      <div className="container my-3">
+        <div className="containerSearch my-5">
+          {/* Search Bar */}
+          <input
+            type="text"
+            className="form-control my-3"
+            placeholder="Search notes..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
         </div>
-        {notes.map((note) => {
-          return (
-            <NoteItem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
-          );
-        })}
+        <h2 className="elegant-heading display-5">Your Notes</h2>
+        <div className="row">
+          {/* Display Filtered Notes */}
+          <AddNote showAlert={props.showAlert} />
+          {filteredNotes.map((note) => (
+            <NoteItem
+              key={note._id}
+              updateNote={updateNote}
+              showAlert={props.showAlert}
+              note={note}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

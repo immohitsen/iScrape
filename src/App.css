@@ -49,3 +49,160 @@ body{
   position: fixed;
   width: 100%;
 }
+
+.elegant-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; /* or whatever weight you need */
+}
+
+.card-title {
+  font-family: 'Montserrat', sans-serif;  /* Font for the title */
+  font-weight: 700;  /* Bold title */
+}
+
+.card-text {
+  font-family: 'Montserrat', sans-serif;
+  color: #e4e4e4;
+  font-weight: 300;  /* Light description text */
+}
+
+
+/* Fixed size for the rectangular note boxes */
+.note-box {
+  width: 280px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 15px;
+  position: relative;
+  background-color: #343a40;  /* Default background */
+  cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease;  /* Smooth transition for background and border */
+}
+
+/* Hover effect with subtle highlight */
+.note-box:hover {
+  background-color: #495057;  /* Lighter background color on hover */
+}
+
+/* Card body style */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Icons hover effect */
+.card-body i:hover {
+  transform: scale(1.1); /* Slightly enlarge icons on hover */
+  transition: transform 0.2s ease-in-out;
+}
+
+
+/* Search Bar Styling */
+input[type="text"] {
+  width: 30vw;
+  border-radius: 50px;
+  padding-left: 15px;
+  background-color: #fdf0d5;
+  color: #272727;
+  font-size: 1rem;
+  border: 1.5px solid #c1121f;
+}
+
+input[type="text"]:focus {
+  background-color: #fdf0d5;
+  border: 1px solid #c1121f;
+  outline: none;
+}
+
+.containerSearch{
+  display: flex;
+  justify-content: center;  /* Centers horizontally */
+  margin: 0;
+}
+
+/* Developer Section Styling */
+.developer-section {
+  background-color: #f9f9f9; /* Light background */
+  padding: 50px 0; /* Padding for top and bottom */
+  font-family: 'Poppins', sans-serif; /* Apply the cool Poppins font */
+  border-radius: 20px;
+}
+
+.developer-section .container {
+  max-width: 800px; /* Limit container width */
+}
+
+
+.developer-section h3 {
+  font-size: 2rem; /* Bigger size for name */
+  color: #f9f9f9; /* Dark gray text */
+  font-weight: 600; /* Slightly bold */
+  margin-bottom: 15px; /* Space below the name */
+}
+
+.aboutp{
+  color: #f9f9f9; /* Lighter gray text for role */
+}
+
+.developer-section p {
+  font-size: 1.1rem; /* Slightly bigger text for role */
+  color: #f9f9f9; /* Lighter gray text for role */
+  margin-bottom: 25px; /* Add spacing */
+}
+
+.developer-section blockquote {
+  font-size: 1.2rem; /* Slightly larger for the quote */
+  color: #f9f9f9; /* Soft gray text for quote */
+  font-style: italic; /* Italicize the quote */
+  border-left: 5px solid #c1121f; /* Left border for quote */
+  padding-left: 20px; /* Padding to the left */
+  margin-left: 0; /* Remove margin on left */
+  margin-top: 10px;
+}
+
+.developer-section img {
+  width: 150px; /* Image size */
+  height: 150px;
+  object-fit: cover; /* Ensure image is well-cropped */
+  border-radius: 50%; /* Circular shape for the image */
+  margin-bottom: 20px; /* Space between image and text */
+
+}
+
+/* Apply a hover effect for the image */
+.developer-section img:hover {
+  transform: scale(1.05); 
+  transition: transform 0.2s ease-in-out; 
+}
+
+/* Adding some responsiveness for mobile */
+@media (max-width: 767px) {
+  .developer-section h3 {
+    font-size: 1.8rem; /* Adjust title size for smaller screens */
+  }
+
+  .developer-section p {
+    font-size: 1rem; /* Adjust role text for smaller screens */
+  }
+}
+
+
+/* Social Icons Styling */
+.social-icons i {
+  color: #fff; /* White color for icons */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.social-icons i:hover {
+  color: #c1121f; /* Color change on hover */
+}
+
+.contact-us{
+  border-radius: 15px 15px 0px 0px;
+}
+
