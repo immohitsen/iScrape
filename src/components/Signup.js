@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
-  const host = "https://iscrape.vercel.app/";
+  const host = process.env.HOST;
 
   const [credentials, setCredentials] = useState({
     name: "",
