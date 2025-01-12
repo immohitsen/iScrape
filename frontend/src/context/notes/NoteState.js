@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import noteContext from "./noteContext";
+import axios from "axios";
+
 
 const NoteState = (props) => {
   const host = process.env.HOST;
