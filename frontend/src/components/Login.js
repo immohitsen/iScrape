@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 function Login(props) {
-  const host = process.env.HOST;
+  const host = "https://iscrape.onrender.com";
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();

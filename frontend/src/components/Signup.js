@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const Signup = (props) => {
-  const host = process.env.HOST;
+  const host = "https://iscrape.onrender.com";
 
   const [credentials, setCredentials] = useState({
     name: "",
