@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const NoteState = (props) => {
-  const host = process.env.HOST;
+  const host = "https://iscrape.onrender.com";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
