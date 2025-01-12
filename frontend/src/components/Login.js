@@ -1,6 +1,8 @@
 import e from "cors";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 function Login(props) {
   const host = process.env.HOST;
@@ -10,24 +12,24 @@ function Login(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${host}/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    try {
+      const response = await axios.post(`${host}/api/auth/login`, {
         email: credentials.email,
         password: credentials.password,
-      }),
-    });
-    const json = await response.json();
-    console.log(json);
-    if (json.success) {
-      localStorage.setItem("token", json.authtoken);
-      navigate("/");
-      props.showAlert("Logged In Successfully", "success");
-    } else {
-      props.showAlert("Invalid details", "danger");
+      });
+      const json = response.data;
+      console.log(json);
+      
+      if (json.success) {
+        localStorage.setItem("token", json.authtoken);
+        navigate("/");
+        props.showAlert("Logged In Successfully", "success");
+      } else {
+        props.showAlert("Invalid details", "danger");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      props.showAlert("An error occurred. Please try again.", "danger");
     }
   };
 

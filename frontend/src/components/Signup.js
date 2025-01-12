@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 const Signup = (props) => {
   const host = process.env.HOST;
@@ -15,26 +17,27 @@ const Signup = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = credentials;
-    const response = await fetch(`${host}/api/auth/createuser`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+
+    try {
+      const response = await axios.post(`${host}/api/auth/createuser`, {
         name,
         email,
         password,
-      }),
-    });
-    const json = await response.json();
-    console.log(json);
-    if (json.success) {
-      // Save the auth token and redirect
-      localStorage.setItem("token", json.authtoken);
-      navigate("/");
-      props.showAlert("Account Created Successfully", "success");
-    } else {
-      props.showAlert("Invalid Credentials", "danger");
+      });
+      const json = response.data;
+      console.log(json);
+
+      if (json.success) {
+        // Save the auth token and redirect
+        localStorage.setItem("token", json.authtoken);
+        navigate("/");
+        props.showAlert("Account Created Successfully", "success");
+      } else {
+        props.showAlert("Invalid Credentials", "danger");
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      props.showAlert("An error occurred. Please try again.", "danger");
     }
   };
 
